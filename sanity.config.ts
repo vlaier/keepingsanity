@@ -1,7 +1,7 @@
 import { defineConfig } from 'sanity';
 
 import { deskTool } from 'sanity/desk';
-import schemas from './schemas';
+import schemas from './sanity/schemas';
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_STUDIO_PROJECT_ID;
 if (!projectId) {
