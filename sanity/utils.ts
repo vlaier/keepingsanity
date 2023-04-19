@@ -21,3 +21,15 @@ export async function getProjects(): Promise<Project[]> {
 
   }`);
 }
+export async function getProjectBySlug(slug: string): Promise<Project[]> {
+  return client.fetch(groq`*[_type == "project" && slug.current == "${slug}"]{
+    _id,
+    _createdAt,
+    name,
+    "slug":slug.current,
+    "image":image.asset->url,
+    url,
+    content
+
+  }`);
+}
