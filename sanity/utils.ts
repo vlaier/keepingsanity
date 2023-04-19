@@ -1,11 +1,12 @@
+import { Project } from '@/types/Project';
 import { createClient, groq } from 'next-sanity';
-import config from '@/sanity.config';
+import { baseConfig as config } from '@/sanity.config';
 const client = createClient(config);
-export async function getProjects() {
+export async function getProjects(): Promise<Project[]> {
   return client.fetch(groq`*[_type == "project"]{
     _id,
     _createdAt,
-    _name,
+    name,
     "slug":slug.current,
     "image":image.asset->url,
     url,
