@@ -6,6 +6,7 @@ const config = {
   dataset: 'production',
   title: 'Keeping Sanity',
   apiVersion: '2023-04-18',
+  useCdn: true,
 };
 const client = createClient(config);
 export async function getProjects(): Promise<Project[]> {
