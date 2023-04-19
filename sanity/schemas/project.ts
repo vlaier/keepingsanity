@@ -33,8 +33,13 @@ const project = {
       ],
     },
     {
-      name: 'url',
-      title: 'URL',
+      name: 'liveUrl',
+      title: 'Website URL',
+      type: 'url',
+    },
+    {
+      name: 'githubUrl',
+      title: 'Github URL',
       type: 'url',
     },
     {
