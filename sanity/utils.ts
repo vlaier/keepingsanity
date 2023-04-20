@@ -1,4 +1,5 @@
-import { Project } from '@/types/Project';
+import { ProjectType } from '@/types/Project';
+import { SectionType } from '@/types/Section';
 import { createClient, groq } from 'next-sanity';
 const projectId = process.env.NEXT_PUBLIC_SANITY_STUDIO_PROJECT_ID;
 const config = {
@@ -9,7 +10,7 @@ const config = {
   useCdn: true,
 };
 const client = createClient(config);
-export async function getProjects(): Promise<Project[]> {
+export async function getProjects(): Promise<ProjectType[]> {
   return client.fetch(groq`*[_type == "project"]{
     _id,
     _createdAt,
@@ -22,7 +23,7 @@ export async function getProjects(): Promise<Project[]> {
 
   }`);
 }
-export async function getProjectBySlug(slug: string): Promise<Project> {
+export async function getProjectBySlug(slug: string): Promise<ProjectType> {
   return client.fetch(groq`*[_type == "project" && slug.current == "${slug}"][0]{
     _id,
     _createdAt,
@@ -31,6 +32,15 @@ export async function getProjectBySlug(slug: string): Promise<Project> {
     "image":image.asset->url,
     liveUrl,
     githubUrl,
+    content
+  }`);
+}
+export async function getSectionBySlug(slug: string): Promise<SectionType> {
+  return client.fetch(groq`*[_type == "section" && slug.current == "${slug}"][0]{
+    _id,
+    _createdAt,
+    title,
+    "slug":slug.current,
     content
   }`);
 }

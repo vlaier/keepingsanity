@@ -1,2 +1,3 @@
 import project from './project';
-export default [project];
+import section from './section';
+export default [project, section];
