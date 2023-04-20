@@ -19,10 +19,10 @@ export default async function Home() {
   ));
   return (
     <div className="max-w-5xl mx-auto">
-      <h1 className="text-7xl font-extrabold py-20">
-        Hello{' '}
+      <h1 className="text-center text-7xl font-extrabold py-20">
+        Piotr{' '}
         <span className="bg-gradient-to-r from-orange-400 to-purple-600 bg-clip-text text-transparent">
-          World!
+          Zieliński
         </span>
       </h1>
       <div>

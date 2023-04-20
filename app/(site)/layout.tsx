@@ -1,5 +1,5 @@
-import './globals.css';
-
+import '../globals.css';
+import Navbar from '@/components/Navbar';
 export const metadata = {
   title: 'Personal website of Piotr Zieliński',
   description: 'Personal portfolio website and blog',
@@ -12,7 +12,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body> {children}</body>
+      <body>
+        <Navbar /> {children}
+      </body>
     </html>
   );
 }
