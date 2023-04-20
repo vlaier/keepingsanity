@@ -1,5 +1,6 @@
 import { ProjectType } from '@/types/Project';
 import { SectionType } from '@/types/Section';
+import { SocialType } from '@/types/Social';
 import { createClient, groq } from 'next-sanity';
 const projectId = process.env.NEXT_PUBLIC_SANITY_STUDIO_PROJECT_ID;
 const config = {
@@ -42,5 +43,16 @@ export async function getSectionBySlug(slug: string): Promise<SectionType> {
     title,
     "slug":slug.current,
     content
+  }`);
+}
+export async function getSocials(): Promise<SocialType[]> {
+  return client.fetch(groq`*[_type == "social"]{
+    _id,
+    _createdAt,
+    name,
+    "slug":slug.current,
+    text,
+    "image":image.asset->url,
+    link
   }`);
 }
