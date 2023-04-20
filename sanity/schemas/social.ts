@@ -8,6 +8,7 @@ const section = {
       title: 'Name',
       type: 'string',
     },
+
     {
       name: 'slug',
       title: 'Slug',
@@ -16,6 +17,11 @@ const section = {
         source: 'name',
         maxLength: 96,
       },
+    },
+    {
+      name: 'text',
+      title: 'Text',
+      type: 'string',
     },
     {
       name: 'image',
@@ -36,6 +42,13 @@ const section = {
       name: 'link',
       title: 'Link',
       type: 'url',
+      validation: (Rule: {
+        uri: (arg0: { allowRelative: boolean; scheme: string[] }) => any;
+      }) =>
+        Rule.uri({
+          allowRelative: true,
+          scheme: ['http', 'https', 'mailto', 'tel'],
+        }),
     },
   ],
 };
