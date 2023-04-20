@@ -12,7 +12,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-slate-900 text-gray-50 bg-[url('/blueLight.png')] bg-no-repeat bg-center">
+      <body className=" bg-gradient-to-b from-blue-950 to-black text-gray-50  bg-no-repeat bg-center border-5 min-h-screen">
         <Navbar />
         <main className="px-2 md:px-10 xl:px-20 mx-auto w-full ">
           {children}

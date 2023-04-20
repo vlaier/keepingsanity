@@ -11,11 +11,15 @@ const Section = async ({ slug }: { slug: string }) => {
     listItem: {
       bullet: ({ children }) => <Badge>{children}</Badge>,
     },
+    block: {
+      normal: ({ children }) => <p className="text-lg">{children}</p>,
+    },
   };
 
   return (
-    <section>
-      <h2>{sectionData.title}</h2>
+    <section className="rounded-xl border border-gray-600/80 flex flex-col gap-2 max-w-xl">
+      <h2 className="text-3xl font-semibold">{sectionData.title}</h2>
+
       <PortableText value={sectionData.content} components={components} />
     </section>
   );
@@ -26,7 +30,7 @@ export default async function Home() {
   const projectsElement = projects.map((project) => (
     <div
       key={project._id}
-      className="rounded-lg border border-gray-500 flex w-fit"
+      className="rounded-lg border border-gray-600/50 flex w-fit"
     >
       <h2>{project.name}</h2>
       <Image
@@ -43,15 +47,15 @@ export default async function Home() {
       <h1 className="text-center text-7xl font-extrabold py-20">
         Piotr Zieliński
       </h1>
-      <div>
-        {/* @ts-expect-error Server Component */}
-        <Section slug="skills" />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* @ts-expect-error Server Component */}
         <Section slug="about-me" />
+        {/* @ts-expect-error Server Component */}
+        <Section slug="skills" />
       </div>
       <div>
         <h2>My Projects</h2>
-        <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:gird-cols-3 xl:gird-cols-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:gird-cols-3 xl:gird-cols-4">
           {projectsElement}
         </div>
       </div>

@@ -1,3 +1,4 @@
 import project from './project';
 import section from './section';
-export default [project, section];
+import social from './social';
+export default [project, section, social];
