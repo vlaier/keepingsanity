@@ -1,7 +1,28 @@
-import { getProjects } from '@/sanity/utils';
+import Badge from '@/components/ui/Badge';
+import { getProjects, getSectionBySlug } from '@/sanity/utils';
+import { PortableText, PortableTextComponents } from '@portabletext/react';
 import Image from 'next/image';
+const Section = async ({ slug }: { slug: string }) => {
+  const sectionData = await getSectionBySlug(slug);
+  const components: PortableTextComponents = {
+    list: {
+      bullet: ({ children }) => <ul className="flex gap-1">{children}</ul>,
+    },
+    listItem: {
+      bullet: ({ children }) => <Badge>{children}</Badge>,
+    },
+  };
+
+  return (
+    <section>
+      <h2>{sectionData.title}</h2>
+      <PortableText value={sectionData.content} components={components} />
+    </section>
+  );
+};
 export default async function Home() {
   const projects = await getProjects();
+
   const projectsElement = projects.map((project) => (
     <div
       key={project._id}
@@ -18,20 +39,15 @@ export default async function Home() {
     </div>
   ));
   return (
-    <div className="max-w-5xl mx-auto">
+    <div className="">
       <h1 className="text-center text-7xl font-extrabold py-20">
-        Piotr{' '}
-        <span className="bg-gradient-to-r from-orange-400 to-purple-600 bg-clip-text text-transparent">
-          Zieliński
-        </span>
+        Piotr Zieliński
       </h1>
       <div>
-        <h2>About me</h2>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt
-          quibusdam voluptatem tempora accusantium vitae ullam aliquid tempore
-          eveniet libero voluptatibus.
-        </p>
+        {/* @ts-expect-error Server Component */}
+        <Section slug="skills" />
+        {/* @ts-expect-error Server Component */}
+        <Section slug="about-me" />
       </div>
       <div>
         <h2>My Projects</h2>

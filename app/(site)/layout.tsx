@@ -12,8 +12,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <Navbar /> {children}
+      <body className="bg-slate-900 text-gray-50 bg-[url('/blueLight.png')] bg-no-repeat bg-center">
+        <Navbar />
+        <main className="px-2 md:px-10 xl:px-20 mx-auto w-full ">
+          {children}
+        </main>
       </body>
     </html>
   );
