@@ -57,12 +57,16 @@ export default async function Home() {
           <PortableText value={project.content} />
         </div>
         <div className="flex gap-4">
-          <a href={project.liveUrl} className="cursor-pointer underline">
-            Live Demo
-          </a>
-          <a href={project.liveUrl} className="cursor-pointer underline">
-            Github
-          </a>
+          {project.liveUrl && (
+            <a href={project.liveUrl} className="cursor-pointer underline">
+              Live Demo
+            </a>
+          )}
+          {project.githubUrl && (
+            <a href={project.liveUrl} className="cursor-pointer underline">
+              Github
+            </a>
+          )}
         </div>
       </div>
     </div>
