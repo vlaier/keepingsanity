@@ -61,7 +61,7 @@ export default async function Home() {
             </a>
           )}
           {project.githubUrl && (
-            <a href={project.liveUrl} className="cursor-pointer underline">
+            <a href={project.githubUrl} className="cursor-pointer underline">
               Github
             </a>
           )}
