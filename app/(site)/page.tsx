@@ -47,14 +47,16 @@ export default async function Home() {
           className="rounded-md object-cover object-center"
         />
       </div>
-      <div className="h-full">
-        <h2 className="text-xl font-semibold mb-2 leading-6 text-center">
-          {project.name}
-        </h2>
-        <div className="text-gray-500 font-bold text-sm">
-          <PortableText value={project.content} />
+      <div className="h-full flex flex-col justify-between">
+        <div>
+          <h2 className="text-xl font-semibold mb-2 leading-6 text-center">
+            {project.name}
+          </h2>
+          <div className="text-gray-400 font-bold text-sm">
+            <PortableText value={project.content} />
+          </div>
         </div>
-        <div className="flex gap-4">
+        <div className="flex gap-4 font-bold mb-4">
           {project.liveUrl && (
             <a href={project.liveUrl} className="cursor-pointer underline">
               Live Demo
@@ -77,7 +79,7 @@ export default async function Home() {
         href={social.link}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex gap-3 text-xl text-gray-400 hover:text-gray-600 transition duration-300 ease-in-out"
+        className="flex gap-3 text-xl text-gray-400 hover:text-gray-600 transition"
       >
         <div className="bg-gray-300 rounded-full p-1.5">
           <img src={social.image} alt={social.name} className="w-4 " />
@@ -102,7 +104,7 @@ export default async function Home() {
         {/* @ts-expect-error Server Component */}
         <Section slug="skills" />
       </div>
-      <div className="mt-14">
+      <div className="mt-20">
         <h2 className="text-3xl font-semibold mb-8">My Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {projectsElement}
