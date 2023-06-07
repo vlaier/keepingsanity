@@ -8,7 +8,7 @@ const Section = async ({ slug }: { slug: string }) => {
   const components: PortableTextComponents = {
     list: {
       bullet: ({ children }) => (
-        <ul className="flex flex-wrap gap-4 w-3/4">{children}</ul>
+        <ul className="flex flex-wrap gap-4 ">{children}</ul>
       ),
     },
     listItem: {
@@ -24,7 +24,7 @@ const Section = async ({ slug }: { slug: string }) => {
   };
 
   return (
-    <section className="mx-auto rounded-xl shadow shadow-blue-300/60 flex flex-col gap-4 px-4 py-6">
+    <section className="mx-auto rounded-xl shadow shadow-blue-300/60 flex flex-col gap-4 p-8">
       <h2 className="text-3xl font-semibold">{sectionData.title}</h2>
       <PortableText value={sectionData.content} components={components} />
     </section>
@@ -93,7 +93,7 @@ export default async function Home() {
   return (
     <>
       <div className="text-center ">
-        <h1 className="text-7xl font-bold mt-20 mb-4">Piotr Zieliński</h1>
+        <h1 className="text-7xl font-bold mt-20 mb-8">Piotr Zieliński</h1>
         <div className="w-fit flex flex-col md:flex-row gap-8 md:mx-auto">
           {socialsElement}
         </div>
